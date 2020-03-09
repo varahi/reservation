@@ -24,7 +24,7 @@
     }
   },
   "replace": {
-    "tmpl": "self.version",
+    "reservation": "self.version",
     "typo3-ter/reservation": "self.version"
   }
 }

@@ -12,7 +12,8 @@ config.tx_extbase{
             Resa\Vitrolles\Domain\Model\Users {
                 mapping {
                     tableName = fe_users
-                    recordType = Tx_Vitrolles_Users
+                    //recordType = Tx_Vitrolles_Users
+                    recordType =
                 }
             }
             

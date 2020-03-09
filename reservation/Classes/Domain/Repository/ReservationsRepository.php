@@ -62,8 +62,13 @@ class ReservationsRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 			
 			return $query->execute()->toArray();
 	}
-	
-	public function checkReservation($idSalle, $starttime, $endtime){
+
+
+    public function checkReservation($idSalle, $starttime, $endtime){
+	    // ToDo: re-write method
+    }
+
+	public function _checkReservation($idSalle, $starttime, $endtime){
 			$query = $this->createQuery();
 			
 			$requete = 'SELECT * 
