@@ -4,16 +4,16 @@ if (!defined('TYPO3_MODE')) {
 }
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    'Resa.Reservation',
-	'Reservation',
-	'Reservation'
+    $_EXTKEY,
+    'Reservation',
+    'Reservation'
 );
 
 $pluginSignature = str_replace('_','',$_EXTKEY) . '_reservation';
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue($pluginSignature, 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/flexform_reservation.xml');
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile('reservation', 'Configuration/TypoScript', 'reservation');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'reservation');
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_vitrolles_domain_model_reservations', 'EXT:vitrolles/Resources/Private/Language/locallang_csh_tx_vitrolles_domain_model_reservations.xlf');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages( 'tx_vitrolles_domain_model_reservations' );

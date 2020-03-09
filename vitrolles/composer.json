@@ -24,7 +24,7 @@
     }
   },
   "replace": {
-    "reservation": "self.version",
-    "typo3-ter/reservation": "self.version"
+    "vitrolles": "self.version",
+    "typo3-ter/vitrolles": "self.version"
   }
 }
