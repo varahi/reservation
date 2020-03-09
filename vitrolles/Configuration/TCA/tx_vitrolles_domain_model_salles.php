@@ -23,7 +23,7 @@ return [
         ),
         'searchFields' => 'title,',
         //'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Salles.php',
-        'iconfile' => 'EXT:reservation/Resources/Public/Icons/tx_vitrolles_domain_model_salles.gif'
+        'iconfile' => 'EXT:vitrolles/Resources/Public/Icons/tx_vitrolles_domain_model_salles.gif'
     ],
 
     'interface' => array(

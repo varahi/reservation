@@ -21,7 +21,7 @@ return [
         ),
         'searchFields' => 'id_users,id_salles,',
         //'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Reservations.php',
-        'iconfile' => 'EXT:reservation/Resources/Public/Icons/tx_vitrolles_domain_model_reservations.gif'
+        'iconfile' => 'EXT:vitrolles/Resources/Public/Icons/tx_vitrolles_domain_model_reservations.gif'
     ],
 
     'interface' => array(
