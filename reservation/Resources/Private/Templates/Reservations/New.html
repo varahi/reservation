@@ -1,0 +1,85 @@
+
+<f:layout name="Default" />
+
+This template displays a NEW form for the current domain object.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        New.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+<f:flashMessages renderMode="div" />
+
+<div id="booking-left">
+	<f:form id="newResa" action="create" pluginName="reservation" name="newReservations" pageType="111" class="form-booking">
+		<fieldset>
+			<legend>Quelle salle voulez-vous réserver ?</legend>
+			<div class="input-select">
+				<f:form.select options="{salles}" optionValueField="uid" optionLabelField="title" id="list-salles" class="list-salles" name="idSalles" />
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend>Pendant combien de temps ?</legend>
+			<div>
+				<span>Du</span>
+				<f:form.textfield id="datepickerDateStart" name="dateStartSelect" class="datepicker-form" value="" required="required" />
+				<span class="span-middle">à partir de</span>
+				<div class="input-select">
+					<f:form.select name="timeStart" options="{7: '07', 8: '08', 9: '09', 10: '10', 11: '11', 12: '12', 13: '13', 14: '14', 15: '15', 16: '16', 17: '17', 18: '18', 19: '19', 20: '20', 21: '21', 22: '22', 23: '23'}" />
+				</div>
+				<span>h</span>
+			</div>
+			<div>
+				<span>au</span>
+				<f:form.textfield id="datepickerDateEnd" name="dateEndSelect" class="datepicker-form" value="" required="required" />
+				<span class="span-middle">jusqu'à</span>
+				<div class="input-select">
+					<f:form.select name="timeEnd" options="{7: '07', 8: '08', 9: '09', 10: '10', 11: '11', 12: '12', 13: '13', 14: '14', 15: '15', 16: '16', 17: '17', 18: '18', 19: '19', 20: '20', 21: '21', 22: '22', 23: '23'}" />
+				</div>
+				<span>h</span>
+			</div>
+			<div class="layout2">
+				<label form="nom">Nom *</label>
+				<f:form.textfield name="lastName" id="nom" value="" required="required" />
+			</div>
+			<div class="layout2">
+				<label form="prenom">Prénom *</label>
+				<f:form.textfield name="firstName" id="prenom" value="" required="required"/>
+			</div>
+			<div class="layout2">
+				<label form="email">Email *</label>
+				<f:form.textfield name="email" id="email" value="" required="required"/>
+			</div>
+			<div class="layout2">
+				<label form="tel">Téléphone *</label>
+				<f:form.textfield name="telephone" id="tel" value="" required="required"/>
+			</div>
+		</fieldset>
+		<fieldset>
+			<div>
+				<f:form.textfield name="potdemiel" class="potdemiel" value="" />
+				<f:form.hidden id="dateStart" name="dateStart" value="" />
+				<f:form.hidden id="dateEnd" name="dateEnd" value="" />
+				<f:form.submit value="Envoyer ma demande" />
+			</div>
+		</fieldset>
+	</f:form>
+
+	<f:for each="{salles}" as="salle" key="salleKey" iteration="salleIteration">
+		<ul id="reservation_{salle.uid}" class="reservations-date">
+			<f:for each="{reservations}" as="resa" key="resaKey" iteration="resaIteration">
+				<f:if condition="{resa.idSalles.uid} == {salle.uid}">
+					<li class="<f:if condition="{resa.hidden} == 0"><f:then>unvailable</f:then><f:else>wait</f:else></f:if>" dateStart="<f:format.date format="m/d/Y">{resa.starttime}</f:format.date>" dateEnd="<f:format.date format="m/d/Y">{resa.endtime}</f:format.date>"></li>
+				</f:if>
+			</f:for>
+		</ul>
+	</f:for>
+</div>
+
+</f:section>

@@ -1,0 +1,28 @@
+
+<f:layout name="Default" />
+
+This template displays a NEW form for the current domain object.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        New.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+<f:flashMessages renderMode="div" />
+
+<f:if condition="{update}=='ok'">
+	<f:then>
+		<p>La réservation a été acceptée !<br>Un e-mail de confirmation a été envoyé à la personne qui a réservé la salle.</p>
+	</f:then>
+	<f:else>
+		<p>Une erreur est survenue !</p>
+	</f:else>
+</f:if>
+
+</f:section>

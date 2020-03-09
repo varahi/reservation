@@ -1,0 +1,15 @@
+
+plugin.tx_vitrolles {
+	view {
+		# cat=plugin.tx_vitrolles/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:vitrolles/Resources/Private/Templates/
+		# cat=plugin.tx_vitrolles/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:vitrolles/Resources/Private/Partials/
+		# cat=plugin.tx_vitrolles/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:vitrolles/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_vitrolles//a; type=string; label=Default storage PID
+		storagePid =
+	}
+}

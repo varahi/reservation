@@ -1,0 +1,25 @@
+<f:layout name="Default" />
+
+<f:section name="main">
+
+<div id="booking">
+	<form class="form-booking">
+		<fieldset>
+			<legend>Disponibilité</legend>
+			<div class="input-select">
+				<f:form.select options="{salles}" optionValueField="uid" optionLabelField="title" id="list-salles-dispo" class="list-salles" name="idSalles" />
+			</div>
+
+			<div class="calendar">
+			</div>
+
+			<div class="legend-calendar">
+				<p class="block-available">Disponible</p>
+				<p class="block-wait">En attente de validation</p>
+				<p class="block-unvailable">Indisponible</p>
+			</div>
+		</fieldset>
+	</form>
+</div>
+
+</f:section>

@@ -1,0 +1,40 @@
+<T3DataStructure>
+	<sheets>
+		<sDEF>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>Function</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<switchableControllerActions>
+						<TCEforms>
+							<label>Select function</label>
+							<config>
+								<type>select</type>
+								<items>
+									<numIndex index="0">
+										<numIndex index="0">Formulaire de reservation</numIndex>
+										<numIndex index="1">Reservations->new;Reservations->create</numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">Calendrier de dispo</numIndex>
+										<numIndex index="1">Reservations->calendrierDisponibilite</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">Validation reservation</numIndex>
+										<numIndex index="1">Reservations->validationReservation</numIndex>
+									</numIndex>
+									<numIndex index="3">
+										<numIndex index="0">Formulaire de refus</numIndex>
+										<numIndex index="1">Reservations->formRefus;Reservations->delete</numIndex>
+									</numIndex>
+								</items>
+							</config>
+						</TCEforms>
+					</switchableControllerActions>
+				</el>
+			</ROOT>
+		</sDEF>
+	</sheets>
+</T3DataStructure>

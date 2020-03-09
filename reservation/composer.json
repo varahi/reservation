@@ -1,0 +1,30 @@
+{
+  "name": "resa/reservation",
+  "type": "typo3-cms-extension",
+  "description": "Reservation Plugin",
+  "authors": [
+    {
+      "name": "Piment Rouge",
+      "role": "Developer",
+      "email": "typo3@pimentrouge.fr"
+    }
+  ],
+  "version": "9.5",
+  "require": {
+    "typo3/cms-core": "^9.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Reas\\Vitrolles\\": "Classes"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Resa\\Vitrolles\\Tests\\": "Tests"
+    }
+  },
+  "replace": {
+    "tmpl": "self.version",
+    "typo3-ter/reservation": "self.version"
+  }
+}

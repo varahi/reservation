@@ -1,0 +1,21 @@
+
+config.tx_extbase{
+    persistence{
+        classes{
+
+            TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
+                subclasses {
+                    Tx_Vitrolles_Users = Resa\Vitrolles\Domain\Model\Users
+					
+          		}
+            }
+            Resa\Vitrolles\Domain\Model\Users {
+                mapping {
+                    tableName = fe_users
+                    recordType = Tx_Vitrolles_Users
+                }
+            }
+            
+    	}
+    }
+}

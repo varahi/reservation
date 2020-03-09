@@ -1,0 +1,33 @@
+
+<f:layout name="Default" />
+
+This template displays a NEW form for the current domain object.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        New.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+<f:flashMessages renderMode="div" />
+
+<f:if condition="{reservation}">
+	<f:then>
+		<p>Merci de préciser la raison du refus : </p>
+		<f:form action="delete" pluginName="reservation" name="reservationsDelete" class="form-booking">
+			<f:form.textarea cols="20" rows="5" name="comment" value="" />
+			<f:form.hidden name="idResa" value="{reservation.uid}" />
+			<f:form.submit value="Valider le refus" />
+		</f:form>
+	</f:then>
+	<f:else>
+		<p>Aucune réservation n'a été trouvée !</p>
+	</f:else>
+</f:if>
+
+</f:section>
