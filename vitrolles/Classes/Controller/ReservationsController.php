@@ -191,7 +191,6 @@ class ReservationsController extends ActionController {
 					$this->reservationsRepository->add($newReservations);
 					
 					// on réinitialise la persistance afin de faire l'insert car à la fin de la fonction on fait un exit
-					//$persistenceManager = $this->objectManager->get('Tx_Extbase_Persistence_Manager');
                     $this->persistenceManager->persistAll();
 					
 					//faire le lien pour la validation
@@ -315,7 +314,8 @@ class ReservationsController extends ActionController {
     //	Envoie un mail
     // ---------------------------------------------------------------------
     public function sendMail($emailEmetteur, $nomEmetteur, $emailDestinataire, $nomDestinataire, $sujet, $contenuHTML, $attachment=''){
-		$message = file_get_contents('fileadmin/templates/default/plugin_tpl/mail/email_default.html');
+		//$message = file_get_contents('fileadmin/templates/default/plugin_tpl/mail/email_default.html');
+        $message = file_get_contents('typo3conf/ext/vitrolles/Resources/Private/Templates/Email/Default.html');
 		// $message = str_replace('%message%', $body, $message);
 		$replace_array = array(
 			'%message%' => $contenuHTML,

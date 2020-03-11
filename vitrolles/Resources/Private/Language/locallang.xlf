@@ -21,6 +21,9 @@
 			<trans-unit id="tx_vitrolles_domain_model_salles.title">
 				<source>Title</source>
 			</trans-unit>
+			<trans-unit id="tx_vitrolles_domain_model_reservations.email_copyright">
+				<source>&copy; MAIRIE VITROLLES 05 2020</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
