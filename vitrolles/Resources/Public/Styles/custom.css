@@ -1,0 +1,25 @@
+.tx-vitrolles .form-booking .datepicker,
+.tx-vitrolles .form-booking .datepicker-form {
+    margin: 0 20px 0 10px;
+    max-width: 235px;
+    padding-right: 40px;
+    background: url('../images/icon_datepicker.png') no-repeat 90% center;
+    background: url('../images/icon_datepicker.png') no-repeat right+10px center;
+
+}
+.tx-vitrolles form input, form textarea {
+    margin: 0;
+    display: inline-block;
+    width: 100%;
+    padding: 11px 10px;
+    padding-right: 10px;
+    border: none;
+    color: #072e5e;
+    border: 2px solid #dedede;
+    font-size: 15px;
+    vertical-align: middle;
+
+}
+.tx-vitrolles .reservations-date {
+    display: none;
+}
