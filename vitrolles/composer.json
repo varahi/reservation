@@ -15,7 +15,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Reas\\Vitrolles\\": "Classes"
+      "Resa\\Vitrolles\\": "Classes"
     }
   },
   "autoload-dev": {
