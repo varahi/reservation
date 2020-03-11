@@ -86,6 +86,8 @@ page {
 		js_vitrolles8 = EXT:vitrolles/Resources/Public/Javascript/jquery-ui-1.11.2.min.js
 		js_vitrolles9 = EXT:vitrolles/Resources/Public/Javascript/jquery.dotdotdot.min.js
 		js_vitrolles10 = EXT:vitrolles/Resources/Public/Javascript/jquery.bxslider.min.js
+		js_vitrolles11 = EXT:vitrolles/Resources/Public/Javascript/sweet-alert.min.js
+		js_vitrolles12 = EXT:vitrolles/Resources/Public/Javascript/sweetalert2.min.js
 
 	}
 
