@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="fr" datatype="plaintext" original="messages" date="2020-03-11T14:22:10Z">
+		<header>
+			<generator>LFEditor</generator>
+		</header>
+		<body>
+			<trans-unit id="acceptPageUid" approved="yes">
+				<source><![CDATA[page UID for accept]]></source>
+				<target><![CDATA[UID de page pour accepter]]></target>
+			</trans-unit>
+			<trans-unit id="emailConfirmationReciver" approved="yes">
+				<source><![CDATA[email confirmation reciver]]></source>
+				<target><![CDATA[e-mail de confirmation de réception]]></target>
+			</trans-unit>
+			<trans-unit id="emailConfirmationSender" approved="yes">
+				<source><![CDATA[email confirmation sender]]></source>
+				<target><![CDATA[expéditeur de confirmation par e-mail]]></target>
+			</trans-unit>
+			<trans-unit id="emailConfirmationSubject" approved="yes">
+				<source><![CDATA[email confirmation subject]]></source>
+				<target><![CDATA[objet de confirmation par e-mail]]></target>
+			</trans-unit>
+			<trans-unit id="rejectPageUid" approved="yes">
+				<source><![CDATA[page UID for reject]]></source>
+				<target><![CDATA[UID de page pour rejet]]></target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

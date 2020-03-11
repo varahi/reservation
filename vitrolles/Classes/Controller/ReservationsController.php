@@ -196,16 +196,18 @@ class ReservationsController extends ActionController {
 					//faire le lien pour la validation
 					/** @var \TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer $cObj */
                     $cObj = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Frontend\\ContentObject\\ContentObjectRenderer');
-                    $urlValidation = $cObj->typolink_URL(array('parameter' => '58', 'additionalParams' => '&tx_vitrolles_reservation[action]=validationReservation&tx_vitrolles_reservation[controller]=Reservations&tx_vitrolles_reservation[idResa]='.$newReservations->getUid(), 'forceAbsoluteUrl' => 1));
+                    //$urlValidation = $cObj->typolink_URL(array('parameter' => '58', 'additionalParams' => '&tx_vitrolles_reservation[action]=validationReservation&tx_vitrolles_reservation[controller]=Reservations&tx_vitrolles_reservation[idResa]='.$newReservations->getUid(), 'forceAbsoluteUrl' => 1));
+                    $urlValidation = $cObj->typolink_URL(array('parameter' => $this->settings['acceptPageUid'], 'additionalParams' => '&tx_vitrolles_reservation[action]=validationReservation&tx_vitrolles_reservation[controller]=Reservations&tx_vitrolles_reservation[idResa]='.$newReservations->getUid(), 'forceAbsoluteUrl' => 1));
 					//faire le lien pour le refus
 					/** @var \TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer $cObj */
                     $cObj = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Frontend\\ContentObject\\ContentObjectRenderer');
-                    $urlRefus = $cObj->typolink_URL(array('parameter' => '59', 'additionalParams' => '&tx_vitrolles_reservation[action]=formRefus&tx_vitrolles_reservation[controller]=Reservations&tx_vitrolles_reservation[idResa]='.$newReservations->getUid(), 'forceAbsoluteUrl' => 1));
-	
+                    //$urlRefus = $cObj->typolink_URL(array('parameter' => '59', 'additionalParams' => '&tx_vitrolles_reservation[action]=formRefus&tx_vitrolles_reservation[controller]=Reservations&tx_vitrolles_reservation[idResa]='.$newReservations->getUid(), 'forceAbsoluteUrl' => 1));
+                    $urlRefus = $cObj->typolink_URL(array('parameter' => $this->settings['rejectPageUid'], 'additionalParams' => '&tx_vitrolles_reservation[action]=formRefus&tx_vitrolles_reservation[controller]=Reservations&tx_vitrolles_reservation[idResa]='.$newReservations->getUid(), 'forceAbsoluteUrl' => 1));
+
 					//envoie du mail à la Mairie
 					$contenuHTML = 'Bonjour,<br>Une nouvelle réservation de salle sur le site : <br><br>Nom : <strong>'.$newUsers->getFirstName().' '.$newUsers->getLastName().'</strong><br>Email : <strong>'.$newUsers->getEmail().'</strong><br>Téléphone : <strong>'.$newUsers->getTelephone().'</strong><br><br>Salle : <strong>'.$salle->getTitle().'</strong><br>Du : <strong>'.date('d/m/Y', $startDate).'</strong> à partir de <strong>'.$this->request->getArgument('timeStart').'h</strong><br>Au : <strong>'.date('d/m/Y', $endDate).'</strong> jusqu\'à <strong>'.$this->request->getArgument('timeEnd').'h</strong><br><br>Pour accepter cette réservation, veuillez cliquer sur <a href="'.$urlValidation.'">j\'accepte</a><br>Pour refuser cette réservation, veuillez cliquer sur <a href="'.$urlRefus.'">je refuse</a>';
 					// $this->sendMail('nepasrepondre@vitrolles05.fr', 'Mairie Vitrolles 05', 'gap@pimentrouge.fr', 'Mairie de Vitrolles 05', '[ MAIRIE VITROLLES 05 ] nouvelle réservation de salle', $contenuHTML);
-					$this->sendMail('nepasrepondre@vitrolles05.fr', 'Mairie Vitrolles 05', 'mairievitrolles05@wanadoo.fr', 'Mairie de Vitrolles 05', '[ MAIRIE VITROLLES 05 ] nouvelle réservation de salle', $contenuHTML);
+					$this->sendMail($this->settings['emailConfirmationSender'], 'From web site user',$this->settings['emailConfirmationReciver'], 'To admin', $this->settings['emailConfirmationSubject'], $contenuHTML);
 					
 					$json = array('status' => 'ok', 'all' => serialize($newReservations));
 				}
