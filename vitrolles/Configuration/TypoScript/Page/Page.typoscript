@@ -1,0 +1,44 @@
+page {
+
+    # Css
+    includeCSS {
+
+        10_css_vitrolles = typo3conf/ext/vitrolles/Resources/Public/Styles/styles.css
+        //10_css_file10.media = all
+
+        #11_css_file11 = EXT:vitrolles/Resources/Public/Styles/styles.responsive.css
+        #11_css_file11.media = all
+
+        #Date picker
+        #12_css_file12 = EXT:vitrolles/Resources/Public/Styles/daterangepicker.css
+        #12_css_file12.media = all
+
+        #13_css_file13 = EXT:vitrolles/Resources/Public/Styles/sweet-alert.css
+        #13_css_file13.media = all
+
+        #14_css_file14 = EXT:vitrolles/Resources/Public/Styles/sweetalert2.css
+        #14_css_file14.media = all
+    }
+
+    # Scss
+    includeCSS {
+        #css_file1_bootstrap_reboot = EXT:vitrolles/Resources/Public/Scss/bootstrap/bootstrap-reboot.scss
+
+    }
+
+    # Js to header
+    includeJSLibs {
+        js_file1 = EXT:vitrolles/Resources/Public/Javascript/jquery.js
+        #Date Picker
+        js_file2  = EXT:vitrolles/Resources/Public/Javascript/moment.min.js
+        js_file3  = EXT:vitrolles/Resources/Public/Javascript/daterangepicker.js
+    }
+
+    #Js to footer
+    includeJSFooter {
+
+        #js_file11 = EXT:vitrolles/Resources/Public/Javascript/skip-link-focus-fix.js
+
+    }
+
+}

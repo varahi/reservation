@@ -14,39 +14,6 @@ plugin.tx_vitrolles {
 	}
 }
 
-plugin.tx_vitrolles._CSS_DEFAULT_STYLE (
-	textarea.f3-form-error {
-		background-color:#FF9F9F;
-		border: 1px #FF0000 solid;
-	}
-
-	input.f3-form-error {
-		background-color:#FF9F9F;
-		border: 1px #FF0000 solid;
-	}
-
-	.tx-vitrolles table {
-		border-collapse:separate;
-		border-spacing:10px;
-	}
-
-	.tx-vitrolles table th {
-		font-weight:bold;
-	}
-
-	.tx-vitrolles table td {
-		vertical-align:top;
-	}
-
-	.typo3-messages .message-error {
-		color:red;
-	}
-
-	.typo3-messages .message-ok {
-		color:green;
-	}
-
-)
 
 
 # TypoScript for page type:
@@ -71,4 +38,62 @@ AjaxAction {
 			orderBy = sorting
 		}
 	}
+}
+
+page {
+
+	# Css
+	includeCSS {
+
+		10_css_vitrolles = EXT:vitrolles/Resources/Public/Styles/styles.css
+		//10_css_file10.media = all
+
+		11_css_vitrolles = EXT:vitrolles/Resources/Public/Styles/styles.responsive.css
+		#11_css_file11.media = all
+
+		#Date picker
+		12_css_vitrolles = EXT:vitrolles/Resources/Public/Styles/daterangepicker.css
+		#12_css_file12.media = all
+
+		13_css_vitrolles = EXT:vitrolles/Resources/Public/Styles/sweet-alert.css
+		#13_css_file13.media = all
+
+		14_css_vitrolles = EXT:vitrolles/Resources/Public/Styles/sweetalert2.css
+		#14_css_file14.media = all
+
+		15_css_vitrolles = EXT:vitrolles/Resources/Public/Styles/jquery-ui-1.11.css
+		16_css_vitrolles = EXT:vitrolles/Resources/Public/Styles/styles.slider.css
+	}
+
+	# Scss
+	includeCSS {
+		#css_file1_bootstrap_reboot = EXT:vitrolles/Resources/Public/Scss/bootstrap/bootstrap-reboot.scss
+
+	}
+
+	# Js to header
+	includeJSLibs {
+		js_vitrolles1 = EXT:vitrolles/Resources/Public/Javascript/jquery-1.11.1.min.js
+
+		#Date Picker
+		js_vitrolles2  = EXT:vitrolles/Resources/Public/Javascript/moment.min.js
+		js_vitrolles3  = EXT:vitrolles/Resources/Public/Javascript/daterangepicker.js
+
+		js_vitrolles4 = EXT:vitrolles/Resources/Public/Javascript/placeholder.js
+		js_vitrolles5 = EXT:vitrolles/Resources/Public/Javascript/iCheck.js
+		js_vitrolles6 = EXT:vitrolles/Resources/Public/Javascript/jquery.cookiesbar.js
+		js_vitrolles7 = EXT:vitrolles/Resources/Public/Javascript/jquery.browser.js
+		js_vitrolles8 = EXT:vitrolles/Resources/Public/Javascript/jquery-ui-1.11.2.min.js
+		js_vitrolles9 = EXT:vitrolles/Resources/Public/Javascript/jquery.dotdotdot.min.js
+		js_vitrolles10 = EXT:vitrolles/Resources/Public/Javascript/jquery.bxslider.min.js
+
+	}
+
+	#Js to footer
+	includeJSFooter {
+
+		js_vitrolles21 = EXT:vitrolles/Resources/Public/Javascript/script.js
+
+	}
+
 }
