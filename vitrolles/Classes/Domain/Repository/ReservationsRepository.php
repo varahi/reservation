@@ -46,21 +46,12 @@ class ReservationsRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	//on pourrait modifier dans le ext_table.php le champ disabled pour qu'il ne soit plus dans les enabled
 	//mais si on fait ça, dans le BE de TYPO3, il n'y a plus l'ampoule
 	public function findOneByUidWithHidden($idReservation){
-			$query = $this->createQuery();
-			
-			$query->matching(
-				$query->logicalAnd(
-					$query->equals("uid", $idReservation)
-				)
-			);
-			
-			// LIMIT
-			$query->setLimit(1); // integer
-			
-			$query->getQuerySettings()->setIgnoreEnableFields(TRUE);
-			$query->getQuerySettings()->setEnableFieldsToBeIgnored(array('disabled'));
-			
-			return $query->execute()->toArray();
+
+        $query = $this->createQuery();
+        $query->statement("SELECT * FROM tx_vitrolles_domain_model_reservations WHERE `uid` ='$idReservation' AND `hidden`");
+        $result=$query->execute()->toArray();
+
+		return $result;
 	}
 
 

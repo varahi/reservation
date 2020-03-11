@@ -283,6 +283,7 @@ class ReservationsController extends ActionController {
 			//on pourrait modifier dans le ext_table.php le champ disabled pour qu'il ne soit plus dans les enabled
 			//mais si on fait ça, dans le BE de TYPO3, il n'y a plus l'ampoule
 			if($reservation = $this->reservationsRepository->findOneByUidWithHidden(intval($this->request->getArgument('idResa')))){
+                \TYPO3\CMS\Core\Utility\DebugUtility::debug($reservation);
 
 				$reservation = $reservation[0];
 				$reservation->setHidden(0);
