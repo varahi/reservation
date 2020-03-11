@@ -2,6 +2,8 @@
 namespace Resa\Vitrolles\Controller;
 
 
+use \TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+
 /***************************************************************
  *
  *  Copyright notice
@@ -30,7 +32,15 @@ namespace Resa\Vitrolles\Controller;
 /**
  * ReservationsController
  */
-class ReservationsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
+class ReservationsController extends ActionController {
+
+    /**
+     * persistenceManager
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager
+     * @inject
+     */
+    protected $persistenceManager = null;
 
 	/**
 	 * reservationsRepository
@@ -135,8 +145,8 @@ class ReservationsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 				}
 
                 // on réinitialise la persistance afin de faire l'insert car à la fin de la fonction on fait un exit
-				$persistenceManager = $this->objectManager->get('Tx_Extbase_Persistence_Manager');
-				$persistenceManager->persistAll();
+				//$persistenceManager = $this->objectManager->get('Tx_Extbase_Persistence_Manager');
+                $this->persistenceManager->persistAll();
 				
 				if(is_null($newUsers->getUid())){
                     $json = array('status' => 'ko');
@@ -181,8 +191,7 @@ class ReservationsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 					$this->reservationsRepository->add($newReservations);
 					
 					// on réinitialise la persistance afin de faire l'insert car à la fin de la fonction on fait un exit
-					$persistenceManager = $this->objectManager->get('Tx_Extbase_Persistence_Manager');
-					$persistenceManager->persistAll();
+                    $this->persistenceManager->persistAll();
 					
 					//faire le lien pour la validation
 					/** @var \TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer $cObj */
@@ -305,7 +314,8 @@ class ReservationsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
     //	Envoie un mail
     // ---------------------------------------------------------------------
     public function sendMail($emailEmetteur, $nomEmetteur, $emailDestinataire, $nomDestinataire, $sujet, $contenuHTML, $attachment=''){
-		$message = file_get_contents('fileadmin/templates/default/plugin_tpl/mail/email_default.html');
+		//$message = file_get_contents('fileadmin/templates/default/plugin_tpl/mail/email_default.html');
+        $message = file_get_contents('typo3conf/ext/vitrolles/Resources/Private/Templates/Email/Default.html');
 		// $message = str_replace('%message%', $body, $message);
 		$replace_array = array(
 			'%message%' => $contenuHTML,
