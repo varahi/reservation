@@ -58,7 +58,7 @@ AjaxAction {
 		additionalHeaders = Content-type:text/html
 		xhtml_cleaning = 0
 		admPanel = 0
-		metaCharset = UTF-8
+		//metaCharset = UTF-8
 		debug = 0
 		no_cache = 1
 	}
