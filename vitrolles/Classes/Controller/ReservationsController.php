@@ -207,7 +207,7 @@ class ReservationsController extends ActionController {
 					//envoie du mail à la Mairie
 					$contenuHTML = 'Bonjour,<br>Une nouvelle réservation de salle sur le site : <br><br>Nom : <strong>'.$newUsers->getFirstName().' '.$newUsers->getLastName().'</strong><br>Email : <strong>'.$newUsers->getEmail().'</strong><br>Téléphone : <strong>'.$newUsers->getTelephone().'</strong><br><br>Salle : <strong>'.$salle->getTitle().'</strong><br>Du : <strong>'.date('d/m/Y', $startDate).'</strong> à partir de <strong>'.$this->request->getArgument('timeStart').'h</strong><br>Au : <strong>'.date('d/m/Y', $endDate).'</strong> jusqu\'à <strong>'.$this->request->getArgument('timeEnd').'h</strong><br><br>Pour accepter cette réservation, veuillez cliquer sur <a href="'.$urlValidation.'">j\'accepte</a><br>Pour refuser cette réservation, veuillez cliquer sur <a href="'.$urlRefus.'">je refuse</a>';
 					// $this->sendMail('nepasrepondre@vitrolles05.fr', 'Mairie Vitrolles 05', 'gap@pimentrouge.fr', 'Mairie de Vitrolles 05', '[ MAIRIE VITROLLES 05 ] nouvelle réservation de salle', $contenuHTML);
-					$this->sendMail($this->settings['emailConfirmationSender'], 'From web site user',$this->settings['emailConfirmationReciver'], 'To admin', $this->settings['emailConfirmationSubject'], $contenuHTML);
+					$this->sendMail($this->settings['emailConfirmationSender'], 'From web site',$this->settings['emailConfirmationReciver'], 'To admin', $this->settings['emailConfirmationSubject'], $contenuHTML);
 					
 					$json = array('status' => 'ok', 'all' => serialize($newReservations));
 				}
@@ -254,7 +254,7 @@ class ReservationsController extends ActionController {
 			
 			//envoie du mail de confirmation au demandeur.
 			$contenuHTML = 'Bonjour,<br><br>Nous sommes navré de vous annoncer que votre réservation a été refusée !<br>Ci-dessous le motif : <br><br>'.$this->request->getArgument('comment');
-			$this->sendMail('nepasrepondre@vitrolles05.fr', 'Mairie Vitrolles 05', $reservation->getIdUsers()->getEmail(), 'Mairie de Vitrolles 05', '[ MAIRIE VITROLLES 05 ] réservation salle refusée', $contenuHTML);//*/
+			$this->sendMail($this->settings['emailConfirmationSender'], 'From web site', $reservation->getIdUsers()->getEmail(), 'To user', $this->settings['emailConfirmationSubject'], $contenuHTML);//*/
 			
 			$this->reservationsRepository->remove($reservation);
 			$this->addFlashMessage('La réservation a été refusée !');
@@ -282,8 +282,7 @@ class ReservationsController extends ActionController {
 			$update = 'ko';
 			//on pourrait modifier dans le ext_table.php le champ disabled pour qu'il ne soit plus dans les enabled
 			//mais si on fait ça, dans le BE de TYPO3, il n'y a plus l'ampoule
-			if($reservation = $this->reservationsRepository->findOneByUidWithHidden(intval($this->request->getArgument('idResa')))){
-                \TYPO3\CMS\Core\Utility\DebugUtility::debug($reservation);
+			if($reservation = $this->reservationsRepository->findOneByUidHidden(intval($this->request->getArgument('idResa')))){
 
 				$reservation = $reservation[0];
 				$reservation->setHidden(0);
@@ -292,7 +291,7 @@ class ReservationsController extends ActionController {
 				
 				//envoie du mail de confirmation au demandeur.
 				$contenuHTML = 'Bonjour,<br><br>Nous vous confirmons que votre réservation a été acceptée !<br>Ci-dessous les détails : <br><br>Salle : <strong>'.$reservation->getIdSalles()->getTitle().'</strong><br>Du : <strong>'.date('d/m/Y', $reservation->getStarttime()->getTimestamp()).'</strong> à partir de <strong>'.date('H', $reservation->getStarttime()->getTimestamp()).'h</strong><br>Au : <strong>'.date('d/m/Y', $reservation->getEndtime()->getTimestamp()).'</strong> jusqu\'à <strong>'.date('H', $reservation->getEndtime()->getTimestamp()).'h</strong>';
-				$this->sendMail('nepasrepondre@vitrolles05.fr', 'Mairie Vitrolles 05', $reservation->getIdUsers()->getEmail(), 'Mairie de Vitrolles 05', '[ MAIRIE VITROLLES 05 ] réservation salle acceptée', $contenuHTML);//*/
+				$this->sendMail($this->settings['emailConfirmationSender'], 'From web site', $reservation->getIdUsers()->getEmail(), 'To user', $this->settings['emailConfirmationSubject'], $contenuHTML);//*/
 			}
 			
 			$this->view->assign('update', $update);
@@ -306,7 +305,7 @@ class ReservationsController extends ActionController {
 	public function formRefusAction() {
 		//on pourrait modifier dans le ext_table.php le champ disabled pour qu'il ne soit plus dans les enabled
 		//mais si on fait ça, dans le BE de TYPO3, il n'y a plus l'ampoule
-		if($reservation = $this->reservationsRepository->findOneByUidWithHidden(intval($this->request->getArgument('idResa')))){
+		if($reservation = $this->reservationsRepository->findOneByUidHidden(intval($this->request->getArgument('idResa')))){
 			$reservation = $reservation[0];
 			$this->view->assign('reservation', $reservation);
 		}

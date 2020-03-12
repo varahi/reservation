@@ -182,7 +182,7 @@ jQuery(document).ready(function(){
 });
 
 jQuery(window).load(function(){	
-	resizeImg(jQuery('#headband'));
+	//resizeImg(jQuery('#headband'));
 });
 
 function tooltips(div){

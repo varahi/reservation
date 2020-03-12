@@ -45,28 +45,34 @@ page {
 	# Css
 	includeCSS {
 		// Disable because isset on site
-		//13_css_vitrolles = EXT:vitrolles/Resources/Public/Styles/sweet-alert.css
+		//comment next line
+#		13_css_vitrolles = EXT:vitrolles/Resources/Public/Styles/sweet-alert.css
 
 		14_css_vitrolles = EXT:vitrolles/Resources/Public/Styles/sweetalert2.css
 		14_css_file14.media = all
 
-		//15_css_vitrolles = EXT:vitrolles/Resources/Public/Styles/jquery-ui-1.11.css
+		//comment next line
+#		15_css_vitrolles = EXT:vitrolles/Resources/Public/Styles/jquery-ui-1.11.css
+
 		100_css_vitrolles = EXT:vitrolles/Resources/Public/Styles/custom.css
 	}
 
 	# Js to header
 	includeJSLibs {
-		//js_vitrolles1 = EXT:vitrolles/Resources/Public/Javascript/jquery-1.11.1.min.js
+		//comment next line
+#		js_vitrolles1 = EXT:vitrolles/Resources/Public/Javascript/jquery-1.11.1.min.js
 
 		#Date Picker
 		js_vitrolles2  = EXT:vitrolles/Resources/Public/Javascript/moment.min.js
 		js_vitrolles3  = EXT:vitrolles/Resources/Public/Javascript/daterangepicker.js
 
 		// Disable because isset on site
-		//js_vitrolles4 = EXT:vitrolles/Resources/Public/Javascript/placeholder.js
-		//js_vitrolles5 = EXT:vitrolles/Resources/Public/Javascript/iCheck.js
-		//js_vitrolles8 = EXT:vitrolles/Resources/Public/Javascript/jquery-ui-1.11.2.min.js
-		//js_vitrolles11 = EXT:vitrolles/Resources/Public/Javascript/sweet-alert.min.js
+		//comment next 4 lines
+#		js_vitrolles4 = EXT:vitrolles/Resources/Public/Javascript/placeholder.js
+#		js_vitrolles5 = EXT:vitrolles/Resources/Public/Javascript/iCheck.js
+#		js_vitrolles8 = EXT:vitrolles/Resources/Public/Javascript/jquery-ui-1.11.2.min.js
+#		js_vitrolles11 = EXT:vitrolles/Resources/Public/Javascript/sweet-alert.min.js
+
 		js_vitrolles12 = EXT:vitrolles/Resources/Public/Javascript/sweetalert2.min.js
 
 	}

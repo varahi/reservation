@@ -36,9 +36,10 @@ class ReservationsRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	//mais si on fait ça, dans le BE de TYPO3, il n'y a plus l'ampoule
 	public function findAllWithHidden(){
 			$query = $this->createQuery();
-			
-			$query->getQuerySettings()->setIgnoreEnableFields(TRUE);
-			$query->getQuerySettings()->setEnableFieldsToBeIgnored(array('disabled'));
+
+            $query->statement("SELECT * FROM tx_vitrolles_domain_model_reservations WHERE NOT `deleted`");
+//    		$query->getQuerySettings()->setIgnoreEnableFields(TRUE);
+//			$query->getQuerySettings()->setEnableFieldsToBeIgnored(array('disabled'));
 			
 			return $query->execute();
 	}
@@ -48,12 +49,20 @@ class ReservationsRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	public function findOneByUidWithHidden($idReservation){
 
         $query = $this->createQuery();
-        $query->statement("SELECT * FROM tx_vitrolles_domain_model_reservations WHERE `uid` ='$idReservation' AND `hidden`");
+        $query->statement("SELECT * FROM tx_vitrolles_domain_model_reservations WHERE `uid` ='$idReservation' AND NOT `deleted`");
         $result=$query->execute()->toArray();
 
 		return $result;
 	}
 
+    public function findOneByUidHidden($idReservation){
+
+        $query = $this->createQuery();
+        $query->statement("SELECT * FROM tx_vitrolles_domain_model_reservations WHERE `uid` ='$idReservation' AND `hidden` AND NOT `deleted`");
+        $result=$query->execute()->toArray();
+
+        return $result;
+    }
 
     public function checkReservation($idSalle, $starttime, $endtime){
 	    // ToDo: re-write method
